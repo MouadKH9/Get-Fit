@@ -1,0 +1,116 @@
+@import url("https://fonts.googleapis.com/css?family=Pacifico|Roboto");
+body {
+  background: #f3f3f3;
+  overflow: hidden;
+  height: 100vh;
+}
+.App {
+  font-family: Roboto;
+  text-align: center;
+}
+.header {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  background: white;
+}
+.header h2 {
+  font-family: Pacifico;
+  color: #1890ff;
+  margin: 0px;
+  padding: 5px;
+}
+
+.card,
+.right {
+  background: white;
+  margin-top: 14vh;
+  border-radius: 10px;
+}
+.profile {
+  font-size: 1.3em;
+}
+
+.card .mini-profile {
+  padding: 20px 0 0 0;
+  background: url("./res/cover.jpg");
+  background-size: cover;
+  border-radius: 10px 10px 0 0;
+}
+.card .mini-profile h2 {
+  color: white;
+}
+
+.mini-info {
+  padding: 10px 10px 0 10px;
+}
+.right {
+  padding: 48px 20px;
+}
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  font-size: 1.3em;
+}
+.stats span {
+  font-weight: 600;
+  display: block;
+  cursor: help;
+  font-size: 0.9em;
+}
+.log {
+  padding: 0;
+  padding-top: 10px;
+}
+.submit {
+  background: #1890ff;
+  border: none;
+  color: white;
+  font-family: Roboto;
+  width: 100%;
+  font-size: 1.5em;
+  cursor: pointer;
+  border-radius: 0 0 10px 10px;
+  padding: 5px;
+  transition: background 0.3s;
+}
+.submit:hover {
+  background: #51acff;
+}
+.ant-card-grid {
+  padding: 15px;
+  font-size: 1.2em;
+}
+/*Login section*/
+.login {
+  background: url("./res/login-bg.jpeg");
+  background-size: cover;
+  height: 100vh;
+}
+.login .container {
+  padding-top: 15%;
+}
+.login h1 {
+  font-family: Pacifico;
+  color: white;
+  font-size: 4.5em;
+  text-shadow: 4px 0px 5px black;
+}
+.login button {
+  font-size: 25px;
+}
+@media only screen and (max-width: 600px) {
+  body {
+    overflow: inherit;
+  }
+  footer {
+    display: none;
+  }
+  .card,
+  .mini-profile {
+    border-radius: 0 !important;
+    margin: 0;
+  }
+  .stats {
+    margin-bottom: 30px;
+  }
+}
