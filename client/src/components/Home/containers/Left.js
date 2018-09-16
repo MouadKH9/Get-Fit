@@ -5,7 +5,7 @@ class Left extends Component {
   render() {
     return (
       <div className="card">
-        <MiniProfile username="Mouad" />
+        <MiniProfile showModal={this.props.showModal} username="Mouad" />
       </div>
     );
   }

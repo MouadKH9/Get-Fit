@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Pacifico|Roboto");
+@import url("https://fonts.googleapis.com/css?family=Lato|Roboto");
 body {
   background: #f3f3f3;
   overflow: hidden;
@@ -13,7 +13,9 @@ body {
   background: white;
 }
 .header h2 {
-  font-family: Pacifico;
+  text-transform: uppercase;
+  font-family: Lato;
+  font-size: 1.9em;
   color: #1890ff;
   margin: 0px;
   padding: 5px;
@@ -22,7 +24,7 @@ body {
 .card,
 .right {
   background: white;
-  margin-top: 14vh;
+  margin-top: 8vh;
   border-radius: 10px;
 }
 .profile {
@@ -30,7 +32,6 @@ body {
 }
 
 .card .mini-profile {
-  padding: 20px 0 0 0;
   background: url("./res/cover.jpg");
   background-size: cover;
   border-radius: 10px 10px 0 0;
@@ -42,8 +43,14 @@ body {
 .mini-info {
   padding: 10px 10px 0 10px;
 }
+.menu-profile {
+  display: flex;
+  justify-content: space-between;
+}
 .right {
   padding: 48px 20px;
+  min-height: 73vh;
+  padding-top: 11vh;
 }
 footer {
   position: absolute;
@@ -80,23 +87,12 @@ footer {
   padding: 15px;
   font-size: 1.2em;
 }
-/*Login section*/
-.login {
-  background: url("./res/login-bg.jpeg");
-  background-size: cover;
-  height: 100vh;
-}
-.login .container {
-  padding-top: 15%;
-}
-.login h1 {
-  font-family: Pacifico;
+.logout {
   color: white;
-  font-size: 4.5em;
-  text-shadow: 4px 0px 5px black;
-}
-.login button {
-  font-size: 25px;
+  display: block;
+  font-size: 1.6em;
+  padding: 5px;
+  cursor: pointer;
 }
 @media only screen and (max-width: 600px) {
   body {

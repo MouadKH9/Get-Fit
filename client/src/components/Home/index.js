@@ -10,8 +10,13 @@ class Home extends Component {
   constructor() {
     super();
     this.state = {
-      showModal: window.location.href.includes("settings")
+      showModal: false
     };
+    this.showModal = this.showModal.bind(this);
+  }
+  showModal() {
+    this.setState({ showModal: true });
+    console.log(this.state.showModal);
   }
   render() {
     return (
@@ -19,7 +24,7 @@ class Home extends Component {
         <Header />
         <Row>
           <Col md={{ span: 5, offset: 1 }}>
-            <Left />
+            <Left showModal={this.showModal} />
           </Col>
           <Col md={{ span: 16, offset: 1 }}>
             <Right />

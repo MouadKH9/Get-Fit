@@ -1,8 +1,26 @@
 import React, { Component } from "react";
 import { Modal, Form, Input, Button } from "antd";
+import { connect } from "react-redux";
 import axios from "axios";
 
 class WelcomeModal extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      current: "",
+      currentError: true,
+      goal: "",
+      goalError: true,
+      rate: "",
+      rateError: true,
+      loading: false,
+      showMe: false
+    };
+    this.handleOk = this.handleOk.bind(this);
+    this.rateChanged = this.rateChanged.bind(this);
+    this.goalChanged = this.goalChanged.bind(this);
+    this.currentChanged = this.currentChanged.bind(this);
+  }
   checkInput(value) {
     return isNaN(value) || value === "";
   }
@@ -39,28 +57,12 @@ class WelcomeModal extends Component {
       window.location.href = "/";
     }
   }
-  constructor(props) {
-    super(props);
-    this.state = {
-      current: "",
-      currentError: true,
-      goal: "",
-      goalError: true,
-      rate: "",
-      rateError: true,
-      loading: false,
-      showMe: this.props.show
-    };
-    this.handleOk = this.handleOk.bind(this);
-    this.rateChanged = this.rateChanged.bind(this);
-    this.goalChanged = this.goalChanged.bind(this);
-    this.currentChanged = this.currentChanged.bind(this);
-  }
+
   render() {
     return (
       <Modal
         centered
-        visible={this.state.showMe}
+        visible={this.state.showMe || this.props.modal}
         footer={
           <Button
             disabled={
@@ -104,5 +106,10 @@ class WelcomeModal extends Component {
     );
   }
 }
-
-export default WelcomeModal;
+function mapStateToProps({ modal }) {
+  return { modal };
+}
+export default connect(
+  null,
+  mapStateToProps
+)(WelcomeModal);

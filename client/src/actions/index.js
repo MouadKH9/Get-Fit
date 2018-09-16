@@ -9,11 +9,21 @@ import {
   getFirstValue,
   getProgress
 } from "../helpers/data.js";
-import { FETCH_USER, UPDATE_LIST, ADD_LOG, FETCH_STATS } from "./types";
+import {
+  FETCH_USER,
+  UPDATE_LIST,
+  ADD_LOG,
+  FETCH_STATS,
+  SHOW_MODAL
+} from "./types";
 
 export const fetchUser = () => async dispatch => {
   const res = await axios.get("/api/currentUser");
   dispatch({ type: FETCH_USER, payload: res.data });
+};
+
+export const showModal = val => async dispatch => {
+  dispatch({ type: SHOW_MODAL, payload: { shown: val } });
 };
 
 export const fetchStats = data => async dispatch => {
@@ -37,8 +47,8 @@ export const fetchUpdate = () => async dispatch => {
   dispatch({ type: UPDATE_LIST, payload: res.data });
 };
 
-export const addLog = value => async dispatch => {
-  const res = await axios.get("/api/addLog?date=today&value=" + value);
+export const addLog = (value, date) => async dispatch => {
+  const res = await axios.get("/api/addLog?date=" + date + "&value=" + value);
   dispatch({ type: ADD_LOG, payload: res.data });
   fetchUpdate()(dispatch);
 };

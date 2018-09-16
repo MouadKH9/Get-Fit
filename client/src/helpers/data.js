@@ -56,7 +56,7 @@ function getWeekStart(data) {
 }
 
 export function getTotal(data) {
-  return getAvg(data) - getFirstValue(data);
+  return (getAvg(data) - getFirstValue(data)).toFixed(2);
 }
 export function getTotalAvg(data) {
   let first = getFirstValue(data);

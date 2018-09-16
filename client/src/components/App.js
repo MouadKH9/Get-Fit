@@ -13,6 +13,7 @@ import "../styles.css";
 class App extends Component {
   componentDidMount() {
     this.props.fetchUser();
+    this.props.showModal(true);
   }
   getContent() {
     if (this.props.auth === null) {
@@ -25,7 +26,6 @@ class App extends Component {
         return (
           <div>
             <Route exact path="/" component={Home} />
-            <Route exact path="/settings" component={Home} />
           </div>
         );
       }

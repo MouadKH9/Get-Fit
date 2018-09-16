@@ -12,7 +12,6 @@ module.exports = app => {
     let user = mongoose.model("users");
     user.findById(req.user._id, (err, prev) => {
       let date = req.query.date;
-      if (date === "today") date = helpers.getCurrentDay();
       prev.data[date] = req.query.value;
       user.findByIdAndUpdate(
         req.user._id,
