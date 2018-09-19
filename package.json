@@ -29,6 +29,7 @@
   "scripts": {
     "start": "node app",
     "server": "nodemon -e js,ejs server",
+    "heroku-postbuild": "cd client && npm install && npm run build",
     "client": "npm start --prefix client",
     "dev":
       "concurrently \"nodemon -e js,ejs server\" \"npm start --prefix client\" ",
