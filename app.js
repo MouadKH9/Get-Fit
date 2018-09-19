@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const passport = require("passport");
 const cookieSession = require("cookie-session");
+const path = require("path");
 const keys = require("./config/keys");
 require("./models/User");
 
@@ -22,6 +23,8 @@ mongoose.connect(keys.mongoURI);
 
 require("./routes/authRoutes")(app);
 require("./routes/dataRoutes")(app);
-
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
 const PORT = process.env.PORT || 5000;
 app.listen(PORT);

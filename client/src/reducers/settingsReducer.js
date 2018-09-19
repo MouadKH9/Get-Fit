@@ -1,8 +1,8 @@
-import { SHOW_MODAL } from "../actions/types";
+import { SHOW_SETTINGS } from "../actions/types";
 
 export default function(state = null, action) {
   switch (action.type) {
-    case SHOW_MODAL:
+    case SHOW_SETTINGS:
       return action.payload || false;
     default:
       return state;

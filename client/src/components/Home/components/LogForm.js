@@ -55,7 +55,6 @@ class LogForm extends Component {
           <button
             className="submit"
             type="primary"
-            htmlType="submit"
             disabled={this.state.valueError}
           >
             Log

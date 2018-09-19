@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import Home from "./Home";
 import Login from "./Login";
+import Loading from "./Loading";
 import { Switch, Route } from "react-router-dom";
 
 import { connect } from "react-redux";
@@ -13,21 +14,15 @@ import "../styles.css";
 class App extends Component {
   componentDidMount() {
     this.props.fetchUser();
-    this.props.showModal(true);
   }
   getContent() {
     if (this.props.auth === null) {
-      console.info("loading");
-      return <span>Loading</span>;
+      return <Loading />;
     } else {
       if (!this.props.auth) {
-        return <Route exact path="/" component={Login} />;
+        return <Route component={Login} />;
       } else {
-        return (
-          <div>
-            <Route exact path="/" component={Home} />
-          </div>
-        );
+        return <Route component={Home} />;
       }
     }
   }

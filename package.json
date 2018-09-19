@@ -21,19 +21,21 @@
     "mongoose": "^5.2.8",
     "passport": "^0.4.0",
     "passport-google-oauth20": "^1.0.0",
-    "prop-types": "^15.6.2"
+    "prop-types": "^15.6.2",
+    "react-card-flip": "^0.2.1",
+    "react-flipcard-2": "^0.3.2"
   },
   "devDependencies": {},
   "scripts": {
     "start": "node app",
     "server": "nodemon -e js,ejs server",
     "client": "npm start --prefix client",
-    "dev": "concurrently \"nodemon -e js,ejs server\" \"npm start --prefix client\" "
+    "dev":
+      "concurrently \"nodemon -e js,ejs server\" \"npm start --prefix client\" ",
+    "build":
+      "concurrently \"nodemon -e js,ejs server\" \"npm run build --prefix client\" "
   },
-  "keywords": [
-    "todo",
-    "list"
-  ],
+  "keywords": ["todo", "list"],
   "author": "Mouad Khchich",
   "license": "ISC",
   "repository": {

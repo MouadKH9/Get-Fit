@@ -2,21 +2,21 @@ import React, { Component } from "react";
 import { Row, Col } from "antd";
 import Header from "../Header";
 import Footer from "../Footer";
-import WelcomeModal from "../Welcome";
 import Left from "./containers/Left";
 import Right from "./containers/Right";
+import { connect } from "react-redux";
+import * as actions from "../../actions";
 
 class Home extends Component {
-  constructor() {
-    super();
-    this.state = {
-      showModal: false
-    };
-    this.showModal = this.showModal.bind(this);
+  componentWillMount() {
+    if (window.location.href.includes("new"))
+      this.props.showSettings(true, true);
   }
-  showModal() {
-    this.setState({ showModal: true });
-    console.log(this.state.showModal);
+  getAttention() {
+    if (this.props.settings && this.props.settings.attention) {
+      document.getElementsByClassName("right")[0].style.zIndex = -1;
+      return <div className="attention" />;
+    }
   }
   render() {
     return (
@@ -31,9 +31,15 @@ class Home extends Component {
           </Col>
         </Row>
         <Footer />
-        <WelcomeModal show={this.state.showModal} />
+        {this.getAttention()}
       </div>
     );
   }
 }
-export default Home;
+function mapStateToProps({ settings }) {
+  return { settings };
+}
+export default connect(
+  mapStateToProps,
+  actions
+)(Home);

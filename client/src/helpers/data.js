@@ -1,5 +1,7 @@
 //Get the average of the week
 export function getAvg(data) {
+  console.log("getAvg Data: ");
+  console.log(data);
   data = sortObj(data);
   data = Object.values(data);
   data = data.slice(getWeekStart(data), data.length);

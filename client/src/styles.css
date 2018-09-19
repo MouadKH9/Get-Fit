@@ -1,8 +1,28 @@
 @import url("https://fonts.googleapis.com/css?family=Lato|Roboto");
+.ReactFlipCard {
+  display: block;
+}
+a {
+  cursor: pointer;
+}
 body {
   background: #f3f3f3;
   overflow: hidden;
   height: 100vh;
+}
+.attention {
+  position: absolute;
+  top: 0;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  width: 100vw;
+  z-index: -1;
+}
+.loading {
+  height: 100vh;
+  padding-top: 43vh;
+  font-size: 5em;
+  color: #1890ff;
 }
 .App {
   font-family: Roboto;
@@ -29,6 +49,8 @@ body {
 }
 .profile {
   font-size: 1.3em;
+  background: white;
+  border-radius: 10px;
 }
 
 .card .mini-profile {
@@ -36,7 +58,13 @@ body {
   background-size: cover;
   border-radius: 10px 10px 0 0;
 }
-.card .mini-profile h2 {
+.card .mini-settings {
+  background: #1890ff;
+  background-size: cover;
+  border-radius: 10px 10px 0 0;
+}
+
+.card h2 {
   color: white;
 }
 
@@ -64,6 +92,9 @@ footer {
   cursor: help;
   font-size: 0.9em;
 }
+.settings .mini-info {
+  padding: 10px 0 0 0 !important;
+}
 .log {
   padding: 0;
   padding-top: 10px;
@@ -82,6 +113,10 @@ footer {
 }
 .submit:hover {
   background: #51acff;
+}
+.submit:disabled {
+  background: gray;
+  cursor: not-allowed;
 }
 .ant-card-grid {
   padding: 15px;

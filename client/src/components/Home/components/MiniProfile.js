@@ -3,8 +3,16 @@ import { Avatar, Row, Icon } from "antd";
 import Info from "./Info";
 import LogForm from "./LogForm";
 import { connect } from "react-redux";
+import * as actions from "../../../actions";
 
 class MiniProfile extends Component {
+  constructor() {
+    super();
+    this.showSettings = this.showSettings.bind(this);
+  }
+  showSettings() {
+    this.props.showSet(true);
+  }
   render() {
     return (
       <div className="profile">
@@ -13,7 +21,7 @@ class MiniProfile extends Component {
             <a href="/api/logout">
               <Icon className="logout" type="logout" theme="outlined" />
             </a>
-            <a href="#settings" onClick={this.props.showModal}>
+            <a onClick={this.showSettings}>
               <Icon className="logout" type="setting" theme="outlined" />
             </a>
           </div>
@@ -33,5 +41,5 @@ function mapStateToProps({ auth }) {
 
 export default connect(
   mapStateToProps,
-  null
+  actions
 )(MiniProfile);

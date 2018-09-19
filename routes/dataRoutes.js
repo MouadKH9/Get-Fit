@@ -28,20 +28,16 @@ module.exports = app => {
   });
   app.get("/api/init", (req, res) => {
     let user = mongoose.model("users");
-    user.findById(req.user._id, (err, prev) => {
-      prev.data[helpers.getCurrentDay()] = req.query.current;
-      user.findByIdAndUpdate(
-        req.user._id,
-        {
-          data: prev.data,
-          "info.goal": req.query.goal,
-          "info.rate": req.query.rate
-        },
-        (err, user) => {
-          if (!err) res.send({ ok: true });
-          else console.log(err);
-        }
-      );
-    });
+    user.findByIdAndUpdate(
+      req.user._id,
+      {
+        "info.goal": req.query.goal,
+        "info.rate": req.query.rate
+      },
+      (err, user) => {
+        if (!err) res.send({ ok: true });
+        else console.log(err);
+      }
+    );
   });
 };
