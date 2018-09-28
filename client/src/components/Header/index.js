@@ -5,7 +5,7 @@ class Header extends Component {
     return (
       <div className="header">
         <Link to="/">
-          <h2>Get Fit!</h2>
+          <h2>Get Fit</h2>
         </Link>
       </div>
     );

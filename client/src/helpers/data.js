@@ -1,8 +1,7 @@
 //Get the average of the week
 export function getAvg(data) {
-  console.log("getAvg Data: ");
-  console.log(data);
   data = sortObj(data);
+  if (isEmpty(data)) return "-";
   data = Object.values(data);
   data = data.slice(getWeekStart(data), data.length);
   let avg = 0;
@@ -15,6 +14,7 @@ export function getAvg(data) {
 //Get the average of last week
 export function getLastAvg(data) {
   data = sortObj(data);
+  if (isEmpty(data)) return "-";
   data = Object.values(data);
   data = data.slice(
     getWeekStart(data) > 6 ? getWeekStart(data) - 7 : 0,
@@ -29,11 +29,14 @@ export function getLastAvg(data) {
 
 //Get the difference
 export function getDiff(data) {
+  if (isEmpty(data) || getLastAvg(data) === "-") return "-";
+  if (getLastAvg(data) * getAvg(data) === 0) return "-";
   return (getAvg(data) - getLastAvg(data)).toFixed(2);
 }
 
 //Get latest weight
 export function getLastValue(data) {
+  if (isEmpty(data)) return "-";
   data = sortObj(data);
   data = Object.values(data);
   return data[data.length - 1];
@@ -51,21 +54,25 @@ export function sortObj(obj) {
 function getWeekStart(data) {
   let values = Object.values(data);
   if (values.length < 7) return 0;
-  for (var i = values.length - 1; i >= 0; i--) {
+  for (let i = values.length - 1; i >= 0; i--) {
     let tmpDate = new Date(values[i]);
     if (tmpDate.getDay() === 0) return i + 3;
   }
 }
 
 export function getTotal(data) {
+  if (isEmpty(data)) return "-";
   return (getAvg(data) - getFirstValue(data)).toFixed(2);
 }
 export function getTotalAvg(data) {
+  if (isEmpty(data)) return "-";
   let first = getFirstValue(data);
+  let last = getAvg(data);
+  let numOfDays = getNumberOfDays(data);
+  console.log(first);
+  console.log(last);
   data = Object.values(sortObj(data));
-  let sum = data.reduce((acc, curr) => parseInt(acc, 10) + parseInt(curr, 10));
-  console.log(sum);
-  return (first - sum / data.length).toFixed(2);
+  return ( (first - last) / ( numOfDays / 7) ).toFixed(2);
 }
 export function getWeeksLeft(data, goal) {
   let current = getAvg(data);
@@ -86,4 +93,15 @@ export function getProgress(data, goal) {
   return Math.ceil(
     (100 * (getAvg(data) - getFirstValue(data))) / (goal - getFirstValue(data))
   );
+}
+export function isEmpty(data) {
+  return Object.values(data).length === 0;
+}
+
+export function getNumberOfDays(data){
+  data = Object.keys(sortObj(data));
+  let date1 = new Date(data[0]);
+  let date2 = new Date(data[data.length - 1]);
+  let timeDiff = Math.abs(date2.getTime() - date1.getTime());
+  return Math.ceil(timeDiff / (1000 * 3600 * 24));
 }

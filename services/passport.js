@@ -42,6 +42,7 @@ passport.use(
         },
         data: { init: 0 }
       }).save();
+
       next(null, user);
     }
   )

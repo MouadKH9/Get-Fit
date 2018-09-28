@@ -28,7 +28,7 @@ export const fetchStats = data => async dispatch => {
 
 export const fetchUpdate = () => async dispatch => {
   const res = await axios.get("/api/getData");
-  fetchStats(res.data)(dispatch);
+  if (Object.values(res.data).length > 1) fetchStats(res.data)(dispatch);
   dispatch({ type: types.UPDATE_LIST, payload: res.data });
 };
 

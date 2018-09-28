@@ -7,11 +7,16 @@ class Info extends Component {
     return (
       <Row className="mini-info">
         <Col span={22} offset={1}>
-          Your Progress:{" "}
+          Your Progress:
           <Progress strokeWidth={12} percent={this.props.stats.progress} />
         </Col>
         <Col span={20} offset={2}>
-          Your Goal: <h3>{this.props.auth.info.goal} kg</h3>
+          Your Goal:{" "}
+          <h3>
+            {this.props.auth.info.goal
+              ? this.props.auth.info.goal + " kg"
+              : "-"}
+          </h3>
         </Col>
       </Row>
     );

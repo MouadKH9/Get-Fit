@@ -10,7 +10,8 @@ module.exports = app => {
     "/api/auth/google/callback",
     passport.authenticate("google"),
     (req, res) => {
-      res.redirect("/");
+      if (!req.user.info.goal) res.redirect("/new");
+      else res.redirect("/");
     }
   );
   app.get("/api/currentUser", (req, res) => {

@@ -22,20 +22,16 @@ class Chart extends Component {
     let max = Math.ceil(Math.max(...list));
     return max + 5 - (max % 5);
   }
-  getRender() {
-    return Object.keys(this.props.list).length === 0 ? (
-      <span>No data</span>
-    ) : (
+  render() {
+    return (
       <LineChart
         data={this.props.list}
         min={this.getClosestMin()}
         max={this.getClosestMax()}
+        messages={{ empty: "No data" }}
         download="weight-chart"
       />
     );
-  }
-  render() {
-    return this.getRender();
   }
 }
 function mapStateToProps({ list }) {

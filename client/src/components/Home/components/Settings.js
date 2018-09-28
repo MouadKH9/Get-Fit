@@ -20,7 +20,7 @@ class Settings extends Component {
   }
   getAttention() {
     if (this.props.settings && this.props.settings.attention)
-      return <h3>One last step to finish off your profile!</h3>;
+      return <h4>One last step to finish off your profile!</h4>;
   }
   checkInput(value) {
     return isNaN(value) || value === "";
