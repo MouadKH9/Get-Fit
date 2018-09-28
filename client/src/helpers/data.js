@@ -77,6 +77,7 @@ export function getTotalAvg(data) {
 export function getWeeksLeft(data, goal) {
   let current = getAvg(data);
   let avg = getTotalAvg(data);
+  if(avg <= 0) return "-";
   let count = 0;
   while (current > goal) {
     current -= avg;
